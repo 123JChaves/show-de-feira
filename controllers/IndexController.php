@@ -17,4 +17,10 @@
         public function index() {
 
         }
+
+        public function verificar() {
+
+            
+
+        }
     }

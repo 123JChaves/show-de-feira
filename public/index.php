@@ -36,6 +36,14 @@
 
         mensagem = function(msg, url, icone) {
 
+            Swal.fire({
+                icon: icone,
+                title: msg,
+                confirmButtontext: "Ok",
+            }).then((result) => {
+                location.href = tabela;
+            });
+
         }
     </script>
     
@@ -50,9 +58,16 @@
         //não tem sessão e não foi dado post
         $email = trim($_POST["email"] ?? NULL);
         $senha = trim($_POST["senha"] ?? NULL);
-    } else {
 
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo "<script>messagem('Email inválido','index','error');</script>";
+        } else if (empty($senha)) {
+            echo "<script>messagem('Digite a senha','index','error');</script>";
+        } else {
+
+        }
     }
+    
     ?>
 </body>
 </html>
