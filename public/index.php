@@ -19,15 +19,32 @@
     <script src="js/jquery.inputmask.min.js"></script>
     <script src="js/jquery.maskedinput-1.2.1.js"></script>
     <script src="js/parsley.min.js"></script>
+    <script>
 
+    //função para mostrar a senha
+    
+        mostrarSenha = function() {
+            const campo = document.getElementById('senha');
+            if (campo.type === 'password') {
+                campo.type = 'text';
+            } else {
+                campo.type = 'password';
+            }
+        }
+    </script>
+    
 </head>
 <body>
     <?php
 
-    if (!isset($_SESSION["showdefeira"])) {
-    require "../views/index/login.php";
-    }
+    if ((!isset($_SESSION["showdefeira"])) && (!$_POST)) {
+        //não tem sessão e não foi dado post        
+        require "../views/index/login.php";
+    } else if ((!isset($_SESSION["showdefeira"])) &&($_POST)) {
+        //não tem sessão e não foi dado post
+    } else {
 
+    }
     ?>
 </body>
 </html>
