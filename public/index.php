@@ -31,6 +31,12 @@
                 campo.type = 'password';
             }
         }
+
+        //função para mensagem de erro
+
+        mensagem = function(msg, url, icone) {
+
+        }
     </script>
     
 </head>
@@ -42,6 +48,8 @@
         require "../views/index/login.php";
     } else if ((!isset($_SESSION["showdefeira"])) &&($_POST)) {
         //não tem sessão e não foi dado post
+        $email = trim($_POST["email"] ?? NULL);
+        $senha = trim($_POST["senha"] ?? NULL);
     } else {
 
     }
