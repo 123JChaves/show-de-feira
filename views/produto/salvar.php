@@ -8,6 +8,11 @@
     $ativo = $_POST["ativo"] ?? NULL;
     $destaque = $_POST["destaque"] ?? NULL;
 
+    //1.500,00 -> 1500,00
+    $valor = str_replace(".", "", $valor);
+    //1500,00 -> 1500.00
+    $_POST["valor"] = str_replace(",", ".", $valor);
+
     if (empty($nome)) {
         echo"<script>('Digite o nome do produto','produto','error');</script>";
     } else if (empty($categoria_id)) {
@@ -24,9 +29,16 @@
 
     }
 
-    $imagem = $_POST["imagem"] ?? time().".jpg";
+    $imagem = $_POST["imagem"] = time().".jpg";
     $_POST["imagem"] = $imagem;
 
     $msg = $this->produto->salvar($_POST);
-
-    echo $msg;
+    
+    if ($msg == 1) {
+        //salvar imagem
+        echo $arquivoDestino = "arquivos/{$imagem}";
+        move_uploaded_file($_FILES["imagem"]["tmp_name"], $arquivoDestino);
+        echo"<script>mensagem('Produto salvo com sucesso','produto','ok');</script>";
+    } else {
+        echo"<script>mensagem('Erro ao salvar o produto','produto','error');</script>";
+    }

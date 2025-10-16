@@ -30,5 +30,6 @@
 
         public function listar() {
             //listar os dados
+            require "../views/produto/listar.php";
         }
     }
