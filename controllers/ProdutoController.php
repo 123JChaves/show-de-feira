@@ -26,6 +26,8 @@
 
         public function excluir($id) {
             //excluir os dados
+            require "../views/produto/excluir.php";
+
         }
 
         public function listar() {

@@ -45,8 +45,24 @@ session_start();
             }).then((result) => {
                 location.href = tabela;
             });
-
         }
+
+        //mensagem para excluir
+
+        excluir = function(id, tabela) {
+            Swal.fire({
+                icon: "question",
+                title: "Deseja realmente excluir este registro?",
+                showCancelButton: true,
+                confirmButtontext: "Excluir",
+                cancelButtonText: "Cancelar",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    location.href = tabela + "/excluir/" + id;
+                }
+            });
+        }
+
     </script>
 
 </head>

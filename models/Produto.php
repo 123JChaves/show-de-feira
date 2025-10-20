@@ -31,10 +31,9 @@ class Produto {
             $consulta->bindParam(":destaque", $dados["destaque"]);
             $consulta->bindParam(":ativo", $dados["ativo"]);
             $consulta->bindParam(":imagem", $dados["imagem"]);
-            $consulta->execute();
         } else {
             //atualizar produto
-            $sql = "update produto set nome = :nome, categoria_id = :categoria_id, 
+            $sql = "update produto set nome = :nome, categoria_id = :categoria_id,
             descricao = :descricao, valor = :valor, destaque = :destaque, ativo = :ativo,
             imagem = :imagem where id = :id";
             $consulta = $this->pdo->prepare($sql);
@@ -58,6 +57,23 @@ class Produto {
         $consulta->execute();
 
         return $consulta->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function editar($id) {
+        $sql = "select * from produto where id = :id limit 1";
+        $consulta = $this->pdo->prepare($sql);
+        $consulta->bindParam(":id", $id);
+        $consulta->execute();
+
+        return $consulta->fetch(PDO::FETCH_OBJ);
+    }
+
+    public function excluir($id) {
+        $sql = "delete from produto where id = :id";
+        $consulta = $this->pdo->prepare($sql);
+        $consulta->bindParam(":id", $id);
+
+        return $consulta->execute();
     }
 
 }

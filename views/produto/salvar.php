@@ -3,7 +3,7 @@
     $id = $_POST["id"] ?? NULL;
     $nome = trim($_POST["nome"] ?? NULL);
     $categoria_id = $_POST["categoria_id"] ?? NULL;
-    $descricao = $_POST["descricao"] ?? NULL;
+    $descricao = trim($_POST["descricao"] ?? NULL);
     $valor = $_POST["valor"] ?? NULL;
     $ativo = $_POST["ativo"] ?? NULL;
     $destaque = $_POST["destaque"] ?? NULL;
@@ -36,7 +36,7 @@
     
     if ($msg == 1) {
         //salvar imagem
-        echo $arquivoDestino = "arquivos/{$imagem}";
+        $arquivoDestino = "arquivos/{$imagem}";
         move_uploaded_file($_FILES["imagem"]["tmp_name"], $arquivoDestino);
         echo"<script>mensagem('Produto salvo com sucesso','produto','ok');</script>";
     } else {

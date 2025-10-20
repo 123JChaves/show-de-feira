@@ -18,4 +18,13 @@
             return $consulta->fetch(PDO::FETCH_OBJ);
         }
 
+        public function editar($id) {
+            $sql = "select * from usuario where id = :id limit 1";
+            $consulta = $this->pdo->prepare($sql);
+            $consulta->bindParam(":id", $id);
+            $consulta->execute();
+
+            return $consulta->fetch(PDO::FETCH_OBJ);
+        }
+
     }
