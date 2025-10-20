@@ -27,4 +27,8 @@
             return $consulta->fetch(PDO::FETCH_OBJ);
         }
 
+        public function salvar($dados) {
+            
+        }
+
     }
