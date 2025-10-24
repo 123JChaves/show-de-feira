@@ -1,5 +1,5 @@
 <?php
-    if(empty($id)) {
+    if(!empty($id)) {
         $dados = $this->usuario->editar($id);
     }
 
@@ -62,7 +62,7 @@
                 <div class="row">
                     <div class="col-12 col-md-4">
                         <label for="telefone">Digite o telefone:</label>
-                        <input type="text" name="telefone" id="telefone" class="form-control"
+                        <input type="text" name="telefone" id="telefone" class="form-control" value="<?=$telefone?>"
                         required data-parsley-required-message="Digite um telefone">
                     </div>
                     <div class="col-12 col-md-2">

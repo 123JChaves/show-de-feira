@@ -33,9 +33,9 @@
         $msg = $this->usuario->salvar($_POST);
 
         if($msg == 1) {
-            echo "<script>mensagem('Usuário cadastrado com sucesso','usuario','ok');</script>";
+            echo "<script>mensagem('Registro salvo com sucesso!','usuario','ok');</script>";
         } else {
-            echo "<script>mensagem('Erro! Usuário não cadastrado','usuario','error');</script>";
+            echo "<script>mensagem('Erro! Registro não salvo','usuario','error');</script>";
         }
 
     } else {

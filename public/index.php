@@ -134,11 +134,11 @@ session_start();
 
             $controller = ucfirst($controller)."Controller";
 
-            if (file_exists("../controllers/{$controller}.php") ) {            
+            if (file_exists("../controllers/{$controller}.php") ) {
                 require "../controllers/{$controller}.php";
                 $control = new $controller();
                 $control->$acao($id);
-            } 
+            }
             else {
                 require "../views/index/erro.php";
             }
